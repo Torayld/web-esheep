@@ -1,0 +1,12 @@
+{
+    "name": "torayld/web-esheep",
+    "type": "library",
+    "description": "Add sheep to walk on your website",
+    "keywords": [],
+    "homepage": "https://github.com/Torayld/web-esheep/",
+    "authors": [Adrianotiger,torayld],
+    "support": {
+        "issues": "https://github.com/Torayld/web-esheep/pulls"
+    },
+    "license": "GNU GPL v3"
+}
