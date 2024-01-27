@@ -8,7 +8,7 @@
  * Author:
  *                Adriano Petrucci (http://esheep.petrucci.ch)
  *
- * Version:       0.9.2
+ * Version:       0.9.2.1
  *
  * Introduction:
  *                As "wrapper" for the OpenSource C# project
@@ -37,6 +37,9 @@
  *
  * Changelog:
  *                Version 0.9.2 - 30.08.2021:
+ *                  - Use local ressource
+ *                  - Add all pets from PC repositories
+ *                Version 0.9.2 - 30.08.2021:
  *                  - crispy stylesheet (pixel image and not antialiased)
  *                Version 0.9.0 - 11.07.2019:
  *                  - Updated animation link to the main project animation
@@ -59,9 +62,16 @@
  *                  - still beta versions...
  */
 
-const VERSION = '0.9.2';              // web eSheep version
+const VERSION = '0.9.2.1';              // web eSheep version
 const ACTIVATE_DEBUG = false;         // show log on console
-const DEFAULT_XML = "https://adrianotiger.github.io/desktopPet/Pets/esheep64/animations.xml"; // default XML animation
+
+const ROOT_SITE ="/commun/lib/vendor/adrianotiger/web-esheep";
+//const DEFAULT_XML = "https://adrianotiger.github.io/desktopPet/Pets/esheep64/animations.xml"; // public XML animation
+const DEFAULT_XML = ROOT_SITE+"/pets/esheep64/animations.xml"; // default XML animation
+
+//const DEFAULT_JSON = "https://adrianotiger.github.io/desktopPet/Pets/pets.json"; // public pets list
+const DEFAULT_JSON = ROOT_SITE+"/pets/pets.json"; // default pets list
+
 const COLLISION_WITH = ["div", "hr"]; // elements on page to detect for collisions
 
   /*
@@ -827,7 +837,7 @@ class eSheep
    */
   _loadPetList(element)
   {
-    fetch("https://adrianotiger.github.io/desktopPet/Pets/pets.json",
+    fetch(DEFAULT_JSON,
     {
       credentials: 'same-origin',
       cache: "force-cache"
@@ -852,7 +862,7 @@ class eSheep
             pet.appendChild(document.createTextNode(json.pets[k].folder));
             pet.addEventListener("click", ()=>{
               var x = new eSheep(this.userOptions);
-              x.Start("https://adrianotiger.github.io/desktopPet/Pets/" + json.pets[k].folder + "/animations.xml");
+              x.Start(ROOT_SITE+"/pets/" + json.pets[k].folder + "/animations.xml");
               this.remove();
             });
             div.appendChild(pet);
