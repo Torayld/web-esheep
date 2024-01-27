@@ -1,4 +1,4 @@
-<b>This folder is not used anymore!</b>
+<b>This folder is used for local access !</b>
 All pets are retrieved from the original project:  https://github.com/Adrianotiger/desktopPet/tree/master/Pets  
 You can create and upload your pet on this repository. The new pet will be available to the desktop application, javascripts on browsers and on the mobile phone app.
 
