@@ -1,9 +1,0 @@
-﻿################################################################################
-# Diese .gitignore-Datei wurde von Microsoft(R) Visual Studio automatisch erstellt.
-################################################################################
-
-/.vs
-/.yarn
-.yarn*
-node_modules
-.editorconfig
