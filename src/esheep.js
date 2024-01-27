@@ -68,7 +68,24 @@ const ACTIVATE_DEBUG = false;         // show log on console
 const ROOT_SITE = "/commun/lib/vendor/torayld/web-esheep";
 const DEFAULT_XML = ROOT_SITE+"/pets/esheep64/animations.xml"; // default XML animation
 const DEFAULT_JSON = ROOT_SITE+"/pets/pets.json"; // default pets list
-
+const ANIMATION_LIST = [
+  'bbunny',
+  'blue_sheep',
+  'esheep64',
+  'fox',
+  'green_sheep',
+  'gsheep-green',
+  'mimiko',
+  'negima',
+  'neko',
+  'orange_sheep',
+  'pingus',
+  'pink_sheep',
+  'purple_sheep',
+  'red_sheep',
+  'ssj-goku',
+  'yellow_sheep'
+];
 const COLLISION_WITH = ["div", "hr"]; // elements on page to detect for collisions
 
   /*
@@ -138,6 +155,10 @@ class eSheep
     if(typeof animation !== 'undefined' &&
       animation != null)
     {
+      if('random'==animation) {
+        var randomNumber = Math.floor(Math.random()*ANIMATION_LIST.length);
+        animation=ANIMATION_LIST[randomNumber];
+      }
       var found = false;
       var arr = ['https://', 'http://', 'ftp://'];
       for (var i = 0; i < arr.length; i++) {
