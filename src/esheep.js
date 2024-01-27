@@ -65,7 +65,7 @@
 const VERSION = '0.9.2.2';              // web eSheep version
 const ACTIVATE_DEBUG = false;         // show log on console
 
-const ROOT_SITE = "/commun/lib/vendor/torayld/web-esheep";
+const ROOT_SITE = window.location['origin']+"/commun/lib/vendor/torayld/web-esheep";
 const DEFAULT_XML = ROOT_SITE+"/pets/esheep64/animations.xml"; // default XML animation
 const DEFAULT_JSON = ROOT_SITE+"/pets/pets.json"; // default pets list
 const ANIMATION_LIST = [
@@ -155,25 +155,26 @@ class eSheep
     if(typeof animation !== 'undefined' &&
       animation != null)
     {
+      var url_found = false;
       if('random'==animation) {
         var randomNumber = Math.floor(Math.random()*ANIMATION_LIST.length);
         animation=ANIMATION_LIST[randomNumber];
-      }
-      var found = false;
-      var arr = ['https://', 'http://', 'ftp://'];
-      for (var i = 0; i < arr.length; i++) {
-        if (animation.indexOf(arr[i]) !== -1) {
-          found = true;
-          break;
+      }else{
+        var url_list = ['https://', 'http://', 'ftp://'];
+        for (var i = 0; i < url_list.length; i++) {
+          if (animation.indexOf(url_list[i]) == 0) {
+            url_found = true;
+            break;
+          }
         }
       }
-      if(found==false){ //short animation name
+      if(url_found===false){ //short animation name
         this.animationFile= ROOT_SITE+"/pets/"+animation+'/animations.xml';
       }else{ //full animation name
         this.animationFile = animation;
       }
     }
-
+    
     var ajax = new XMLHttpRequest();
     var sheepClass = this;
 
@@ -185,7 +186,7 @@ class eSheep
             // successfully loaded XML, parse it and create first esheep.
           sheepClass._parseXML(this.responseText);
         else
-          console.error("XML not available:" + this.statusText + "\n" + this.responseText);
+          console.error("XXXXXML not available:" + this.statusText + "\n" + this.responseText);
       }
     });
     ajax.send(null);
