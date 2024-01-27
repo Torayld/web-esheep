@@ -4,7 +4,7 @@
     "description": "Add sheep to walk on your website",
     "keywords": [],
     "homepage": "https://github.com/Torayld/web-esheep/",
-    "authors": [Adrianotiger,torayld],
+    "authors": ['Adrianotiger','torayld'],
     "support": {
         "issues": "https://github.com/Torayld/web-esheep/pulls"
     },
