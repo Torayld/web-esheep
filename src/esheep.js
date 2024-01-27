@@ -65,7 +65,7 @@
 const VERSION = '0.9.2.1';              // web eSheep version
 const ACTIVATE_DEBUG = false;         // show log on console
 
-const ROOT_SITE ="/commun/lib/vendor/adrianotiger/web-esheep";
+const ROOT_SITE ="/commun/lib/vendor/torayld/web-esheep";
 //const DEFAULT_XML = "https://adrianotiger.github.io/desktopPet/Pets/esheep64/animations.xml"; // public XML animation
 const DEFAULT_XML = ROOT_SITE+"/pets/esheep64/animations.xml"; // default XML animation
 
