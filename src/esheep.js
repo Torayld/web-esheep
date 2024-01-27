@@ -8,7 +8,7 @@
  * Author:
  *                Adriano Petrucci (http://esheep.petrucci.ch)
  *
- * Version:       0.9.2.1
+ * Version:       0.9.2.2
  *
  * Introduction:
  *                As "wrapper" for the OpenSource C# project
@@ -62,14 +62,11 @@
  *                  - still beta versions...
  */
 
-const VERSION = '0.9.2.1';              // web eSheep version
+const VERSION = '0.9.2.2';              // web eSheep version
 const ACTIVATE_DEBUG = false;         // show log on console
 
-const ROOT_SITE ="/commun/lib/vendor/torayld/web-esheep";
-//const DEFAULT_XML = "https://adrianotiger.github.io/desktopPet/Pets/esheep64/animations.xml"; // public XML animation
+const ROOT_SITE = "/commun/lib/vendor/torayld/web-esheep";
 const DEFAULT_XML = ROOT_SITE+"/pets/esheep64/animations.xml"; // default XML animation
-
-//const DEFAULT_JSON = "https://adrianotiger.github.io/desktopPet/Pets/pets.json"; // public pets list
 const DEFAULT_JSON = ROOT_SITE+"/pets/pets.json"; // default pets list
 
 const COLLISION_WITH = ["div", "hr"]; // elements on page to detect for collisions
@@ -141,7 +138,19 @@ class eSheep
     if(typeof animation !== 'undefined' &&
       animation != null)
     {
-      this.animationFile = animation;
+      var found = false;
+      var arr = ['https://', 'http://', 'ftp://'];
+      for (var i = 0; i < arr.length; i++) {
+        if (animation.indexOf(arr[i]) !== -1) {
+          found = true;
+          break;
+        }
+      }
+      if(found==false){ //short animation name
+        this.animationFile= ROOT_SITE+"/pets/"+animation+'/animations.xml';
+      }else{ //full animation name
+        this.animationFile = animation;
+      }
     }
 
     var ajax = new XMLHttpRequest();
