@@ -64,8 +64,8 @@
 
 const VERSION = '0.9.2.2';              // web eSheep version
 const ACTIVATE_DEBUG = false;         // show log on console
-
-const ROOT_SITE = window.location['origin']+"/commun/lib/vendor/torayld/web-esheep";
+var script_url = document.currentScript.getAttribute('src');
+const ROOT_SITE = window.location['origin']+script_url.substring(0,script_url.lastIndexOf('/')+1)+"..";
 const DEFAULT_XML = ROOT_SITE+"/pets/esheep64/animations.xml"; // default XML animation
 const DEFAULT_JSON = ROOT_SITE+"/pets/pets.json"; // default pets list
 const ANIMATION_LIST = [
@@ -174,7 +174,7 @@ class eSheep
         this.animationFile = animation;
       }
     }
-    
+
     var ajax = new XMLHttpRequest();
     var sheepClass = this;
 
