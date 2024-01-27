@@ -8,5 +8,12 @@
     "support": {
         "issues": "https://github.com/Torayld/web-esheep/pulls"
     },
-    "license": "GNU GPL v3"
+    "license": "GNU GPL v3",
+    "extra": {
+    "component": {
+      "scripts": [
+        "dist/esheep.min.js"
+      ]
+    }
+  }
 }
