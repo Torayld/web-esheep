@@ -36,13 +36,20 @@ The most recent browsers doesn't allows cross requests over Javascript. So the s
 **Tatsutoshi Nomura** is the creator of the esheep and designed it for Fuji Television. This is only a copy, using some images found in the web.
 
 # Build GitHub project
-eSheep uses `yarn` or `composer` to build it.  
-### Set up build environment  
-`yarn install --dev`  
-### Build the files in `dist`
-`yarn build`
+eSheep uses `composer` to build it. 
 
-### Build the files in `dist`
-add "torayld/web-esheep": "0.9.2.1" into vendor/composer.json
+### Set up build environment  
+into vendor/composer.json
+{
+  "require": {
+  "torayld/web-esheep": "dev-master",
+  },
+  "repositories": [
+    {
+      "type": "vcs",
+      "url" : "https://github.com/Torayld/web-esheep.git"
+    }
+  ]
+}
 
 update project `composer update`
